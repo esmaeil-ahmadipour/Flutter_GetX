@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/utils/components.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -16,7 +17,52 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(),
+      body: ListView(
+        children: [
+          ListTile(
+            title: RaisedButton(
+              child: Text('Go to Other Page'),
+              onPressed: () {
+                navigationOtherPage();
+              },
+            ),
+          ),
+          Divider(),
+          ListTile(
+            title: RaisedButton(
+              child: Text('Show SnackBar'),
+              onPressed: () {
+                getSnackBar(position: '');
+              },
+            ),
+            subtitle: RaisedButton(
+              child: Text('Show SnackBar : Top'),
+              onPressed: () {
+                getSnackBar(position: 'top');
+              },
+            ),
+          ),
+          Divider(),
+          ListTile(
+            title: RaisedButton(
+              child: Text('Show Dialog'),
+              onPressed: () {
+                getDialogs();
+              },
+            ),
+          ),
+          Divider(),
+          ListTile(
+            title: RaisedButton(
+              child: Text('Show BottomSheet'),
+              onPressed: () {
+                getBottomSheet();
+              },
+            ),
+          ),
+          Divider(),
+        ],
+      ),
     );
   }
 }
