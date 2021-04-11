@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/state_management/counter_state.dart';
 import 'package:flutter_getx/utils/components.dart';
+import 'package:get/get.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -11,14 +13,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final CounterState counterState = Get.put(CounterState());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: buildRow(),
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body: ListView(
         children: [
+          ListTile(
+              title: Obx(() => Text('State:' + counterState.counter.string))),
+          Divider(),
           ListTile(
             title: RaisedButton(
               child: Text('Go to Other Page'),
@@ -63,6 +71,27 @@ class _MyHomePageState extends State<MyHomePage> {
           Divider(),
         ],
       ),
+    );
+  }
+
+  Row buildRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            counterState.increment();
+          },
+        ),
+        FloatingActionButton(
+          child: Icon(Icons.remove_rounded),
+          onPressed: () {
+            counterState.decrement();
+          },
+        ),
+      ],
     );
   }
 }
