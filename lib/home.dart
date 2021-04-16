@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Divider(),
           ListTile(
             title: RaisedButton(
-              child: Text('Go to Other Page'),
+              child: Text('Go to State Management Sample'),
               onPressed: () {
                 navigationOtherPage();
               },
@@ -80,12 +80,14 @@ class _MyHomePageState extends State<MyHomePage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         FloatingActionButton(
+          heroTag: 'increment',
           child: Icon(Icons.add),
           onPressed: () {
             counterState.increment();
           },
         ),
         FloatingActionButton(
+          heroTag: 'decrement',
           child: Icon(Icons.remove_rounded),
           onPressed: () {
             counterState.decrement();
