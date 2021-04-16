@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/screens/other_page.dart';
+import 'package:flutter_getx/screens/sum_page.dart';
 import 'package:get/route_manager.dart';
 
 void getBottomSheet() {
@@ -78,5 +79,6 @@ void getSnackBar({String position}) {
 }
 
 void navigationOtherPage() {
-  Get.to(() => OtherPage());
+  Get.to(() => SumPage());
+  // Get.to(() => OtherPage());
 }
